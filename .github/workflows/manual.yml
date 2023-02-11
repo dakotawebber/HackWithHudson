@@ -41,5 +41,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: Dakota
         template: ./ARM-Templates/container-webapp-template.json
-        parameters: webAppName=dakot-${{ env.targetEnv }}
+        parameters: webAppName=dakotdevops-${{ env.targetEnv }}
         
