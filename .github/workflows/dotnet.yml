@@ -56,3 +56,17 @@ jobs:
 
       - name: Docker Push
         run: docker push $registryName/$repositoryName:$tag
+  deployToDev:
+    runs-on: ubuntu-latest
+
+
+    steps:
+    - name: Azure Login
+      uses: Azure/login@v1.4.6
+      with:
+        # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+        creds: ${{ secrets.AZURE_SECRET }}
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'dakotdevops-dev'
+        images: '${{env.registryName}}/${{env.repositoryName}}:${{env.tag}}'
