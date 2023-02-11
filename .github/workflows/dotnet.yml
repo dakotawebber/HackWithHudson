@@ -15,6 +15,11 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      registryName: dakotdevopsreg.azurecr.io
+      repositoryName: wth/dotnetcoreapp
+      dockerFolderPath: Application/src/RazorPagesTestSample
+      tag: ${{ github.run_number }}
 
     steps:
     - uses: actions/checkout@v3
